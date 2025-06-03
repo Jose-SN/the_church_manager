@@ -1,0 +1,114 @@
+// Button Variables
+$button-padding: (
+  small: 0.4rem 0.8rem,
+  medium: 0.6rem 1.2rem,
+  large: 0.8rem 1.6rem,
+);
+
+$button-font-sizes: (
+  small: 0.875rem,
+  medium: 1rem,
+  large: 1.125rem,
+);
+
+$button-colors: (
+  primary: #646cff,
+  primary-hover: #535bf2,
+  secondary: #6c757d,
+  secondary-hover: #5a6268,
+  text: #ffffff,
+);
+
+// Base button styles
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 8px;
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  
+  // Remove default button styles
+  background: none;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  
+  // Size variants
+  @each $size, $padding in $button-padding {
+    &--#{$size} {
+      padding: $padding;
+      font-size: map-get($button-font-sizes, $size);
+    }
+  }
+  
+  // Full width modifier
+  &--full-width {
+    width: 100%;
+  }
+  
+  // Variant: Primary
+  &--primary {
+    background-color: map-get($button-colors, primary);
+    color: map-get($button-colors, text);
+    
+    &:hover {
+      background-color: map-get($button-colors, primary-hover);
+      box-shadow: 0 2px 8px rgba(map-get($button-colors, primary), 0.3);
+    }
+    
+    &:active {
+      transform: translateY(1px);
+    }
+  }
+  
+  // Variant: Secondary
+  &--secondary {
+    background-color: map-get($button-colors, secondary);
+    color: map-get($button-colors, text);
+    
+    &:hover {
+      background-color: map-get($button-colors, secondary-hover);
+      box-shadow: 0 2px 8px rgba(map-get($button-colors, secondary), 0.3);
+    }
+    
+    &:active {
+      transform: translateY(1px);
+    }
+  }
+  
+  // Variant: Outline
+  &--outline {
+    background-color: transparent;
+    color: map-get($button-colors, primary);
+    border: 2px solid map-get($button-colors, primary);
+    
+    &:hover {
+      background-color: rgba(map-get($button-colors, primary), 0.1);
+    }
+    
+    &:active {
+      transform: translateY(1px);
+    }
+  }
+  
+  // Disabled state
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+  
+  // Focus state for accessibility
+  &:focus-visible {
+    outline: 3px solid rgba(map-get($button-colors, primary), 0.5);
+    outline-offset: 2px;
+  }
+}
