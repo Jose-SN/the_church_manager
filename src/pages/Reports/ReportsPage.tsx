@@ -1,4 +1,16 @@
-import { ChartBarIcon, DocumentTextIcon } from '@heroicons/react/24/outline';
+import { 
+  ChartBarIcon, 
+  DocumentTextIcon, 
+  CurrencyDollarIcon, 
+  UserGroupIcon 
+} from '@heroicons/react/24/outline';
+
+interface ReportType {
+  id: string;
+  title: string;
+  description: string;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+}
 
 const reportTypes: ReportType[] = [
   {
